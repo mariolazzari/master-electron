@@ -1,0 +1,28 @@
+{
+  "name": "master-electron",
+  "version": "1.0.0",
+  "description": "\"# master-electron\"",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec \"electron .\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariolazzari/master-electron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariolazzari/master-electron/issues"
+  },
+  "homepage": "https://github.com/mariolazzari/master-electron#readme",
+  "devDependencies": {
+    "electron": "^6.0.1",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "colors": "^1.3.3"
+  }
+}
