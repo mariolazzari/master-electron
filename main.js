@@ -1,7 +1,18 @@
 const { app, BrowserWindow } = require("electron");
 const colors = require("colors");
+const bcrypt = require("bcryptjs");
 
 console.log(colors.rainbow("ciao ciao"));
+bcrypt.hash("myPassword", 10, (err, hash) =>
+  console.log("myPassword hashed:", hash)
+);
+
+console.log("App is ready:", app.isReady());
+
+setTimeout(() => {
+  console.log("App is ready after 2s:", app.isReady());
+}, 2000);
+
 // prevent garbage collector
 let mainWindow;
 
@@ -23,8 +34,36 @@ const createWindow = () => {
   mainWindow.on("close", () => (mainWindow = null));
 };
 
+// before quit event
+/*
+app.on("before-quit", e => {
+  console.log("prevent default quit");
+  e.preventDefault();
+  console.log("save data and manual quit.");
+  app.quit();
+});
+*/
+
+// window blur
+
+app.on("browser-window-blur", () => {
+  console.log("App unfocused");
+});
+
+app.on("browser-window-focus", () => {
+  console.log("App focused.");
+});
+
+// window focused
+
 // app is ready
-app.on("ready", createWindow);
+app.on("ready", () => {
+  console.log("App is ready.", app.isReady());
+  console.log("desktop", app.getPath("desktop"));
+  console.log("user data", app.getPath("userData"));
+  console.log("temp", app.getPath("temp"));
+  createWindow();
+});
 // quit on all windows closed
 app.on("window-all-closed", () => {
   if (process.platform === "darwin") {
