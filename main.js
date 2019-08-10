@@ -14,7 +14,7 @@ setTimeout(() => {
 }, 2000);
 
 // prevent garbage collector
-let mainWindow;
+let mainWindow, secondaryWindow;
 
 const createWindow = () => {
   console.log("create win");
@@ -23,15 +23,38 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 1000,
     heoght: 800,
-    webPreferences: { nodeIntegration: true }
+    webPreferences: { nodeIntegration: true },
+    //show: false // set true when ready to show
+    backgroundColor: "#2c92f9"
+  });
+
+  // main window properties
+  secondaryWindow = new BrowserWindow({
+    width: 600,
+    heoght: 300,
+    webPreferences: { nodeIntegration: true },
+    //show: false // set true when ready to show
+    backgroundColor: "#2c92f9",
+    parent: mainWindow,
+    modal: true
   });
 
   // load index file in main window
   mainWindow.loadFile("index.html");
+  secondaryWindow.loadFile("secondary.html");
+
+  // load url (deprecated)
+  //mainWindow.loadURL("https://mariolazzari.it");
+
   // open dev tools
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
+
+  // subscribe ready to show event
+  //mainWindow.once("ready-to-show", mainWindow.show);
+
   // subscribe close event
   mainWindow.on("close", () => (mainWindow = null));
+  secondaryWindow.on("close", () => (mainWindow = null));
 };
 
 // before quit event
