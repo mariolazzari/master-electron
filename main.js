@@ -17,8 +17,6 @@ setTimeout(() => {
 let mainWindow, secondaryWindow;
 
 const createWindow = () => {
-  console.log("create win");
-
   // main window properties
   mainWindow = new BrowserWindow({
     width: 1000,
@@ -36,7 +34,8 @@ const createWindow = () => {
     //show: false // set true when ready to show
     backgroundColor: "#2c92f9",
     parent: mainWindow,
-    modal: true
+    modal: false,
+    frame: false
   });
 
   // load index file in main window
