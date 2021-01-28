@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mariolazzari/master-electron#readme",
   "devDependencies": {
-    "electron": "^7.2.4",
+    "electron": "^9.4.0",
     "nodemon": "^1.19.1"
   },
   "dependencies": {
