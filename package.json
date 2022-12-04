@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/mariolazzari/master-electron#readme",
   "devDependencies": {
-    "electron": "^18.3.7",
-    "nodemon": "^1.19.1"
+    "electron": "^22.0.0",
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
